@@ -1,0 +1,84 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: my API
+servers:
+  - url: /v1
+paths:
+  /hello:
+    get:
+      operationId: application.endpoints.endpoint.hello
+      tags:
+        - Hello
+      summary: World
+      parameters:
+        - in: query
+          name: name
+          schema:
+            type: string
+          description: Your name
+          required: False
+        - in: query
+          name: name
+          schema:
+            type: string
+          description: Your name
+          required: True
+      responses:
+        200:
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/dummy"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      x-tokenInfoFunc: application.support.auth.dummy_func
+      flows:
+        implicit:
+          authorizationUrl: https://example.com/oauth2/dialog
+          scopes:
+            secret: Allow accessing secret
+    basic:
+      type: http
+      scheme: basic
+      x-basicInfoFunc: application.support.auth.basic_auth
+  schemas:
+    Error:
+      required:
+        - dummyfield1
+        - dummyfield2
+      properties:
+        dummyfield1:
+          type: integer
+          format: int32
+        dummyfield2:
+          type: string
+    dummy:
+      required:
+        - dummyfield1
+        - dummyfield2
+      properties:
+        dummyfield1:
+          type: integer
+          format: int32
+        dummyfield2:
+          type: string
+
+
+
+
+
+
+
+
+
