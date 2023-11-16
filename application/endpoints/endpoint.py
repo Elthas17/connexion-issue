@@ -1,8 +1,7 @@
 
 
-def hello():
-    """ Read """
+def hello(name=None):
 
-    return {'hello': 'world'}
+    return {'hello': name}
 
 

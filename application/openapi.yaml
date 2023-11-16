@@ -17,13 +17,13 @@ paths:
           schema:
             type: string
           description: Your name
-          required: False
+          required: True
         - in: query
           name: name
           schema:
             type: string
           description: Your name
-          required: True
+          required: False
       responses:
         200:
           description: Expected response to a valid request
