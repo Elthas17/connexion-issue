@@ -2,20 +2,12 @@
 from application import create_app
 import socket
 
-
 app = create_app('config.Config')
 
 
-
-
-@app.route('/')
+@app.route("/")
 def home():
-
-    return """
-        <!doctype html>
-        <title>Hello World</title>
-    """
-
+    return "<h>hello world</h>"
 
 
 if __name__ == "__main__":
@@ -29,4 +21,6 @@ if __name__ == "__main__":
         port=port
     ))
 
-    app.run(host='0.0.0.0', port=port, use_reloader=False)
+    app.run(host='0.0.0.0', port=port)
+    #use_reloader is the problem
+    # app.run(host='0.0.0.0', port=port, use_reloader=False)

@@ -1,7 +1,6 @@
 import os
 
 
-
 class Config:
     """Base config vars."""
 
@@ -9,6 +8,7 @@ class Config:
     # API
     CORS_HEADERS = 'Content-Type'
     ENV = 'development'
+
 
 class DevelopmentConfig(Config):
 
@@ -19,6 +19,7 @@ class DevelopmentConfig(Config):
 
     # sqlalchemy
     SQLALCHEMY_ECHO = True
+
 
 class StagingConfig(Config):
 
